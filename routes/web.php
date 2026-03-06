@@ -16,6 +16,10 @@ Route::get("/submitForm/{username}/{email}",function($name,$email){
 });
 
 
+// Create a small route with parameter and return the parameter in the response. 
+// The route should be /student/{name} and the response should be "Welcome to the student page: {name}" where {name} is the parameter passed in the URL.
+// Also create a route with optional parameter /city/{name?} and return "Welcome to the City: {name}" where {name} is the parameter passed in the URL or "Unknown City" 
+// if no parameter is provided.
 Route::get("/student/{name}",function($name){
     return "Welcome to the student page: ". $name;
 });
