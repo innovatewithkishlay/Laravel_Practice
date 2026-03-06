@@ -14,3 +14,12 @@ Route::get('/username/{name?}', function ($name="user") {
 Route::get("/submitForm/{username}/{email}",function($name,$email){
     return "Your entered name is: ". $name . " and email is: " . $email;
 });
+
+
+Route::get("/student/{name}",function($name){
+    return "Welcome to the student page: ". $name;
+});
+
+Route::get("/city/{name?}",function($name="Unknown City"){
+    return "Welcome to the City: ". $name;
+});
