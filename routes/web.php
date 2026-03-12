@@ -25,7 +25,11 @@ Route::get("/home/{name}",function($name){
     return "Welcom to the home page: ".$name;
 })->where("name","[A-Za-z]+");
 
-
+//Fallback route is used to handle the requests that do not match any of the defined routes. 
+// It is defined using the Route::fallback method.
+Route::fallback(function(){
+    return "404 Not Found. The page you are looking for does not exist.";
+});
 
 // Create a small route with parameter and return the parameter in the response. 
 // The route should be /student/{name} and the response should be "Welcome to the student page: {name}" where {name} is the parameter passed in the URL.
