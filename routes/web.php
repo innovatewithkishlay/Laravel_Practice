@@ -28,8 +28,27 @@ Route::get("/home/{name}",function($name){
 //Fallback route is used to handle the requests that do not match any of the defined routes. 
 // It is defined using the Route::fallback method.
 Route::fallback(function(){
-    return "404 Not Found. The page you are looking for does not exist.";
+    return "404 Not Found. The page you are looking for does not exist. kishlay saying this";
 });
+
+//Group routing is used to group multiple routes under a common prefix or middleware.
+Route::prefix("master")->group(function(){
+    Route::get("/dashboard",function(){
+        return "Welcome to the dashboard";
+    });
+    Route::get("/profile",function(){
+        return "Welcome to the profile page";
+    });
+});
+Route::prefix("agent")->group(function(){
+    Route::get("/profile",function(){
+        return "welcome to agent profile";
+    });
+    Route::get("/settings/{name}",function($name){
+        return "Welcome $name to the agent settings";
+    });
+});
+
 
 // Create a small route with parameter and return the parameter in the response. 
 // The route should be /student/{name} and the response should be "Welcome to the student page: {name}" where {name} is the parameter passed in the URL.
@@ -44,6 +63,9 @@ Route::get("/city/{name?}",function($name="Unknown City"){
 });
 
 //create a route with constraint routing it should have letter k inside if not then say not found
+// Route::get("/product/{name}",function($name){
+//     return "Welcome to the product page: ". $name;
+// })->where("name",".*k.*"); //This will restrict the name to contain the letter "k" anywhere in the string. If the name does not contain "k", it will return a 404 Not Found response.
 Route::get("/product/{name}",function($name){
     return "Welcome to the product page: ". $name;
-})->where("name",".*k.*"); //This will restrict the name to contain the letter "k" anywhere in the string. If the name does not contain "k", it will return a 404 Not Found response.
+})->where("name","[A-Za-z]*k[A-Za-z]*");
