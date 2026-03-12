@@ -49,7 +49,15 @@ Route::prefix("agent")->group(function(){
     });
 });
 
-
+//Group Routing without prefix
+Route::group([],function(){
+    Route::get("/about",function(){
+        return "Welcome to the about page";
+    });
+    Route::get("/contact",function(){
+        return "Welcome to the contact page";
+    });
+});
 // Create a small route with parameter and return the parameter in the response. 
 // The route should be /student/{name} and the response should be "Welcome to the student page: {name}" where {name} is the parameter passed in the URL.
 // Also create a route with optional parameter /city/{name?} and return "Welcome to the City: {name}" where {name} is the parameter passed in the URL or "Unknown City" 
