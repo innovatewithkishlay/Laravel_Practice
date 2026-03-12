@@ -58,6 +58,18 @@ Route::group([],function(){
         return "Welcome to the contact page";
     });
 });
+
+Route::get("/welcome",function(){
+    for($i=0;$i<5;$i++){
+        echo "Welcome to the $i the page <br>";
+    }
+});
+
+
+
+
+
+                                                        // *QUESTIONS PRACTICE*
 // Create a small route with parameter and return the parameter in the response. 
 // The route should be /student/{name} and the response should be "Welcome to the student page: {name}" where {name} is the parameter passed in the URL.
 // Also create a route with optional parameter /city/{name?} and return "Welcome to the City: {name}" where {name} is the parameter passed in the URL or "Unknown City" 
@@ -70,6 +82,8 @@ Route::get("/city/{name?}",function($name="Unknown City"){
     return "Welcome to the City: ". $name;
 });
 
+
+
 //create a route with constraint routing it should have letter k inside if not then say not found
 // Route::get("/product/{name}",function($name){
 //     return "Welcome to the product page: ". $name;
@@ -77,3 +91,58 @@ Route::get("/city/{name?}",function($name="Unknown City"){
 Route::get("/product/{name}",function($name){
     return "Welcome to the product page: ". $name;
 })->where("name","[A-Za-z]*k[A-Za-z]*");
+
+
+// MINI HACKY PROJECT
+// The Computer Science department is organizing several events such as Cognitia, Internal Event, Mini Expo, and Final Expo. You are required to develop a small Event Registration System using Laravel Routing.
+// Create routes to display the homepage with a welcome message and another route to display the list of available events.
+
+// Implement a route that allows users to view details of a specific event by passing the event name as a parameter in the URL.
+
+// Also create a route where students can register for an event by providing their name and roll number through route parameters.
+
+// Add another route where the student's branch is optional, so if it is not provided, a default value should be displayed.
+
+// Additionally, implement parameter constraints to ensure that the roll number accepts only numeric values and create another route where the ID must contain exactly three digits.
+
+// Test all routes by accessing them through appropriate URLs in the browser.
+
+  
+// A)
+Route::get('eventhome',function(){
+        return "Welcome to the Computer Science Department Event Registration System";
+});
+// B)
+Route::prefix('events')->group(function(){
+        Route::get('Cognitia',function(){
+            return "Welcome to the Coginita even page, the details are below!! ";
+        });
+        Route::get('InternalEvent',function(){
+            return "Welcome to the Internal Event page, the details are below!! ";
+        });
+        Route::get("MiniExpo",function(){
+            return "Welcome to the MiniExpo, the details are below!!";
+        });
+        Route::get("FinalExpo",function(){
+            return "Welcome to the FinalExpo, the details are below!!";
+        });
+        Route::fallback(function(){
+            return "404 Not Found. The event you are looking for does not exist.";
+        });
+});
+Route::get("/events/{eventname}",function($eventname){
+    $events=[
+        "Cognitia" => "Welcome to the Cognitia event page, the details are below!!",
+        "InternalEvent" => "Welcome to the Internal Event page, the details are below!!",
+        "MiniExpo" => "Welcome to the MiniExpo, the details are below!!",
+        "FinalExpo" => "Welcome to the FinalExpo, the details are below!!"
+    ];
+    if(array_key_exists($eventname,$events)){
+        return $events[$eventname];
+    };
+  return "404 Not Found. The event you are looking for does not exist.";
+});
+// c)
+Route::get("/even/{name}/{rollno}/{branch?}",function($name,$rollno,$branch="CSE"){
+    return "Welcome $name, you have registered successfully for the evnt with roll number: $rollno";
+})->where("rollno","[0-9]{8)");
