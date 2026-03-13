@@ -65,11 +65,15 @@ Route::get("/welcome",function(){
     }
 });
 
+//Name Route is used to assign a name to a route, which can be used to generate URLs or redirect to the route.
+
+Route::view('/nameroute','app');
+Route::view('/cse/scai/27block/web/cabin7','student')->name('details');
 
 
 
 
-                                                        // *QUESTIONS PRACTICE*
+// *QUESTIONS PRACTICE*
 // Create a small route with parameter and return the parameter in the response. 
 // The route should be /student/{name} and the response should be "Welcome to the student page: {name}" where {name} is the parameter passed in the URL.
 // Also create a route with optional parameter /city/{name?} and return "Welcome to the City: {name}" where {name} is the parameter passed in the URL or "Unknown City" 
@@ -146,3 +150,24 @@ Route::get("/events/{eventname}",function($eventname){
 Route::get("/even/{name}/{rollno}/{branch?}",function($name,$rollno,$branch="CSE"){
     return "Welcome $name, you have registered successfully for the evnt with roll number: $rollno";
 })->where("rollno","[0-9]{8)");
+
+
+
+// create one route with optional parameter which will showcase unknown , if you are entering nothing in the url and if you are entering something in the url then it will show palindrome number
+Route::get('/palindrome/{number?}',function($number=null){
+    if($number === null){
+        return "Unknown";
+    }
+    $num = $number;
+    $reversedNum = 0;
+
+    while ($num > 0) {
+        $digit = $num % 10;
+        $reversedNum = ($reversedNum * 10) + $digit;
+       $num = (int)($num / 10);
+    }
+
+    if($number===$reversedNum){
+        return "$number is a palindrome number.";
+    }
+});
