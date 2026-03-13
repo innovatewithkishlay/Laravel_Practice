@@ -70,7 +70,8 @@ Route::get("/welcome",function(){
 Route::view('/nameroute','app');
 Route::view('/cse/scai/27block/web/cabin7','student')->name('details');
 
-//Passing values to the view
+//Passing values to the view 
+// 1) using Associative array
 Route::get('/',function(){
     $courses=[
         "sectionA"=>"Section A is brilliant",
@@ -79,7 +80,15 @@ Route::get('/',function(){
     ];
     return view('student',['course'=>$courses]);
 });
-
+// 2) using compact function
+Route::get('/compact',function(){
+    $courses=[
+        "sectionA"=>"Section A is brilliant",
+        "sectionB"=>"Section B is great",
+        "SectionC"=>"Section C is good",   
+    ];
+    return view('student',compact('courses'));
+});
 
 
 
