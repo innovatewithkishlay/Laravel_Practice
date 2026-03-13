@@ -70,6 +70,16 @@ Route::get("/welcome",function(){
 Route::view('/nameroute','app');
 Route::view('/cse/scai/27block/web/cabin7','student')->name('details');
 
+//Passing values to the view
+Route::get('/',function(){
+    $courses=[
+        "sectionA"=>"Section A is brilliant",
+        "sectionB"=>"Section B is great",
+        "SectionC"=>"Section C is good",
+    ];
+    return view('student',['course'=>$courses]);
+});
+
 
 
 
