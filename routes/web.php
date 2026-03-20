@@ -89,7 +89,15 @@ Route::get('/compact',function(){
     ];
     return view('student',compact('courses'));
 });
-
+// 3) using with method
+Route::get('/with',function(){
+    $courses=[
+        "sectionA"=>"Section A is brilliant",
+        "sectionB"=>"Section B is great",
+        "SectionC"=>"Section C is good",
+    ];
+    return view('student')->with('courses',$courses);
+});
 
 
 // *QUESTIONS PRACTICE*
@@ -106,6 +114,7 @@ Route::get("/city/{name?}",function($name="Unknown City"){
 });
 
 
+// Q. which command is use to create view using terminal ans is php artisan make:view viewname
 
 //create a route with constraint routing it should have letter k inside if not then say not found
 // Route::get("/product/{name}",function($name){
