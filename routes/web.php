@@ -12,7 +12,8 @@ use App\Http\Controllers\InvokableController;
 
 Route::get('/invokable', InvokableController::class);
 Route::get('/display/{id}',[Unit3Controller::class,'display']);
-
+Route::get('/calc',[Unit3Controller::class,'calc']);
+Route::get('/pattern',[Unit3Controller::class,'pattern']);
 //**************************************** Second Unit ************************************** */
 //This is optional parameter routing
 // Route::get('/username', function ($name) {

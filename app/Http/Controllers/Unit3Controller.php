@@ -21,10 +21,26 @@ class Unit3Controller extends Controller
         if(count($users)<=0){
             return view('missingvalue');
         }else{
-            $username= $users[$id]  ?? "User not found";
+            // $username= $users[$id]  ?? "User not found";
             return view('showview',compact('users','id'));
             // return "The user is: ". $users;
             // return view('showview',compact('users'));
         }
+    }
+    public function calc(){
+        $a=10;
+        $b=20;
+        $c=$a+$b;
+        return "The sum of a and b is: ". $c;
+    }
+    public function pattern(){
+        $pattern="";
+        for($i=1;$i<=5;$i++){
+            for($j=1;$j<=$i;$j++){
+                $pattern .="*";
+            }
+            $pattern .="<br>";
+        }
+        return $pattern;
     }
 }
