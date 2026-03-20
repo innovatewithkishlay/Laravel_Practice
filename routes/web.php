@@ -3,8 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\controllers\Unit3Controller;
 
-Route::get('/unit3controller',[Unit3Controller::class,'show']);
+//Step1: Create a controller using the command php artisan make:controller Unit3Controller
+//Step2: open create controller app->http->controller and add any method with route and return any string in that method
+//Step3: open web.php import the controller and add the route for that method in the controller and return 
 
+Route::get('/unit3controller',[Unit3Controller::class,'show']);
+Route::get('/',[Unit3Controller::class,'display']);
 
 
 
