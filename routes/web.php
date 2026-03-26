@@ -5,7 +5,7 @@ use App\Http\controllers\Unit3Controller;
 use App\Http\Controllers\InvokableController;
 use App\Http\Controllers\ResourceYZController;
 use App\Http\Controllers\APIYZController;
-
+use App\Http\Controllers\MiddlewareYZController;
 // **********************************************UNIT 3 CONTROLLER ***********************************************
 //Step1: Create a controller using the command php artisan make:controller Unit3Controller
 //Step2: open create controller app->http->controller and add any method with route and return any string in that method
@@ -20,11 +20,9 @@ Route::get('/calc',[Unit3Controller::class,'calc']);
 Route::get('/pattern',[Unit3Controller::class,'pattern']);
 
 Route::resource('/kishlay',ResourceYZController::class);
+Route::apiResource('/apikishlay',APIYZController::class);
 
-
-
-
-
+Route::get("/middleware",[MiddlewareYZController::class,'display']);
 
 
 //**************************************** Second Unit ************************************** */

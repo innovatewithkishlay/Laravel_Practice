@@ -12,6 +12,9 @@ class APIYZController extends Controller
     public function index()
     {
         //
+        return response()->json(
+            ["message"=>"Response from api resource controller"]
+        );
     }
 
     /**
