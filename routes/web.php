@@ -6,24 +6,36 @@ use App\Http\Controllers\InvokableController;
 use App\Http\Controllers\ResourceYZController;
 use App\Http\Controllers\APIYZController;
 use App\Http\Controllers\MiddlewareYZController;
-use App\Http\Middleware\MyYZMidleware;
 
 // **********************************************UNIT 3 CONTROLLER ***********************************************
 //Step1: Create a controller using the command php artisan make:controller Unit3Controller
 //Step2: open create controller app->http->controller and add any method with route and return any string in that method
 //Step3: open web.php import the controller and add the route for that method in the controller and return 
 
-// Route::get('/unit3controller',[Unit3Controller::class,'show']);
-// Route::get('/',[Unit3Controller::class,'display']);
+Route::get('/unit3controller',[Unit3Controller::class,'show']);
+Route::get('/',[Unit3Controller::class,'display']);
+
 
 Route::get('/invokable', InvokableController::class);
 Route::get('/display/{id}',[Unit3Controller::class,'display']);
 Route::get('/calc',[Unit3Controller::class,'calc']);
-Route::get('/pattern',[Unit3Controller::class,'pattern']);
+Route::get('/pattern',[Unit3Controller::class,'pattern']); 
 
+// **********************************************RESOURCE CONTROLLER ***********************************************
+//Step1: Create a resource controller using the command php artisan make:controller ResourceYZController --resource
+//Step2: open create controller app->http->controller and add any method with route and return any string in that method
+//Step3: open web.php import the controller and add the route for that method in the controller and return any string in that method
 Route::resource('/kishlay',ResourceYZController::class);
+
+// This will create all the routes for the resource controller like index, create, store, show, edit, update and destroy.
+// Just run the command php artisan make:controller APIYZController --resource to create a resource controller and then add the route for that controller in web.php file.
 Route::apiResource('/apikishlay',APIYZController::class);
 
+//Middlware in larverl 
+// 1) create a middleware controller
+// 2) create a middleware inside middlware folder using command
+// 3) register the middleware in bootstrap/app.php file
+// 4) use the middleware in the route and test it by passing age parameter in the url like
 Route::get("/middleware",[MiddlewareYZController::class,'display'])->middleware('agefactor');
 
 
