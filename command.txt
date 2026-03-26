@@ -1,0 +1,2 @@
+PS C:\Users\Kishlay\myfristProject> php artisan make:controller ResourceYZController --resource  
+//For creating controller
