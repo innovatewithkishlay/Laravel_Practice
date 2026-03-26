@@ -1,2 +1,5 @@
 PS C:\Users\Kishlay\myfristProject> php artisan make:controller ResourceYZController --resource  
 //For creating controller
+
+php artisan make:controller APIYZController --api
+//use to make api controller

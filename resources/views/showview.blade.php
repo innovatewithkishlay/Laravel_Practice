@@ -8,6 +8,8 @@
     <h1>{{ $users[$id] }}</h1>
 @endif
 
+
+
 @php
 $fact=1;
 @endphp
@@ -18,6 +20,7 @@ $fact=1;
 
 @endfor
 <h1>Factorial of 10 is {{$fact}}</h1>
+
 
 @for($i=1;$i<=$id;$i++)
     <h3>hello</h3>
