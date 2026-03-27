@@ -6,6 +6,10 @@ use App\Http\Controllers\InvokableController;
 use App\Http\Controllers\ResourceYZController;
 use App\Http\Controllers\APIYZController;
 use App\Http\Controllers\MiddlewareYZController;
+use App\Http\Controllers\GYZController;
+use App\Http\Controllers\BrainController;
+
+
 
 // **********************************************UNIT 3 CONTROLLER ***********************************************
 //Step1: Create a controller using the command php artisan make:controller Unit3Controller
@@ -37,6 +41,25 @@ Route::apiResource('/apikishlay',APIYZController::class);
 // 3) register the middleware in bootstrap/app.php file
 // 4) use the middleware in the route and test it by passing age parameter in the url like
 Route::get("/middleware",[MiddlewareYZController::class,'display'])->middleware('agefactor');
+
+
+//Global middleware is a middleware that is applied to all the routes in the application. 
+// It is registered in the bootstrap/app.php file and it will be executed for every request that is made to the application.
+//  You can create a global middleware by creating a middleware class and then registering it in the bootstrap/app.php file.
+Route::get("/globalmiddleware",[GYZController::class,'privacy']);
+
+
+//This is middleware inside the controller, 
+// Step1: create a middleware controller
+// Step2: create a middleware inside middlware folder using command php artisan make:middleware BrainMiddleware
+// Step3: register the middleware in bootstrap/app.php file
+// Step4: use the middleware in the controller by adding the middleware in the constructor of the controller
+// Step5: test the middleware by passing age parameter in the url like http://localhost:8000/brain?age=20
+Route::get("/brain",[BrainController::class,'access']);
+
+// Create Criteria of country and user in the middleware if user == your name and coutry = India then 
+// only user can access the page otherwise error 
+
 
 
 //**************************************** Second Unit ************************************** */
