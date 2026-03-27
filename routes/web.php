@@ -33,7 +33,7 @@ Route::apiResource('/apikishlay',APIYZController::class);
 
 //Middlware in larverl 
 // 1) create a middleware controller
-// 2) create a middleware inside middlware folder using command
+// 2) create a middleware inside middlware folder using command php artisan make:middleware MyYZMidleware
 // 3) register the middleware in bootstrap/app.php file
 // 4) use the middleware in the route and test it by passing age parameter in the url like
 Route::get("/middleware",[MiddlewareYZController::class,'display'])->middleware('agefactor');
