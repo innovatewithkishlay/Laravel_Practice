@@ -7,7 +7,7 @@ use App\Http\Controllers\ResourceYZController;
 use App\Http\Controllers\APIYZController;
 use App\Http\Controllers\MiddlewareYZController;
 use App\Http\Controllers\GYZController;
-use App\Http\Controllers\BrainController;
+// use App\Http\Controllers\BrainController;
 
 
 
@@ -16,37 +16,37 @@ use App\Http\Controllers\BrainController;
 //Step2: open create controller app->http->controller and add any method with route and return any string in that method
 //Step3: open web.php import the controller and add the route for that method in the controller and return 
 
-Route::get('/unit3controller',[Unit3Controller::class,'show']);
-Route::get('/',[Unit3Controller::class,'display']);
+// Route::get('/unit3controller',[Unit3Controller::class,'show']);
+// Route::get('/',[Unit3Controller::class,'display']);
 
 
-Route::get('/invokable', InvokableController::class);
-Route::get('/display/{id}',[Unit3Controller::class,'display']);
-Route::get('/calc',[Unit3Controller::class,'calc']);
-Route::get('/pattern',[Unit3Controller::class,'pattern']); 
+// Route::get('/invokable', InvokableController::class);
+// Route::get('/display/{id}',[Unit3Controller::class,'display']);
+// Route::get('/calc',[Unit3Controller::class,'calc']);
+// Route::get('/pattern',[Unit3Controller::class,'pattern']); 
 
 // **********************************************RESOURCE CONTROLLER ***********************************************
 //Step1: Create a resource controller using the command php artisan make:controller ResourceYZController --resource
 //Step2: open create controller app->http->controller and add any method with route and return any string in that method
 //Step3: open web.php import the controller and add the route for that method in the controller and return any string in that method
-Route::resource('/kishlay',ResourceYZController::class);
+// Route::resource('/kishlay',ResourceYZController::class);
 
 // This will create all the routes for the resource controller like index, create, store, show, edit, update and destroy.
 // Just run the command php artisan make:controller APIYZController --resource to create a resource controller and then add the route for that controller in web.php file.
-Route::apiResource('/apikishlay',APIYZController::class);
+// Route::apiResource('/apikishlay',APIYZController::class);
 
 //Middlware in larverl 
 // 1) create a middleware controller
 // 2) create a middleware inside middlware folder using command php artisan make:middleware MyYZMidleware
 // 3) register the middleware in bootstrap/app.php file
 // 4) use the middleware in the route and test it by passing age parameter in the url like
-Route::get("/middleware",[MiddlewareYZController::class,'display'])->middleware('agefactor');
+// Route::get("/middleware",[MiddlewareYZController::class,'display'])->middleware('agefactor');
 
 
 //Global middleware is a middleware that is applied to all the routes in the application. 
 // It is registered in the bootstrap/app.php file and it will be executed for every request that is made to the application.
 //  You can create a global middleware by creating a middleware class and then registering it in the bootstrap/app.php file.
-Route::get("/globalmiddleware",[GYZController::class,'privacy']);
+// Route::get("/globalmiddleware",[GYZController::class,'privacy']);
 
 
 //This is middleware inside the controller, 
@@ -55,12 +55,29 @@ Route::get("/globalmiddleware",[GYZController::class,'privacy']);
 // Step3: register the middleware in bootstrap/app.php file
 // Step4: use the middleware in the controller by adding the middleware in the constructor of the controller
 // Step5: test the middleware by passing age parameter in the url like http://localhost:8000/brain?age=20
-Route::get("/brain",[BrainController::class,'access']);
+// Route::get("/brain",[BrainController::class,'access']);
 
 
+//Template inheritance in laravel
+// Step1: create a layout file in the views folder and add the common structure of the
+// website like header, footer and navigation in that file and use @yield to define the section where the child views will be displayed.
+// Step2: create child views and extend the layout file using @extends and define the section
+// using @section and @endsection and add the content for that section in the child views.
 
-Route::view("/login",'userlogin');
-Route::view("/logout",'userlogout');
+Route::view('abc','mylayout/app');
+Route::view("login",'userlogin'); 
+Route::view("logout",'userlogout');
+
+// Route::prefix('223yz')->controller(BrainController::class)->group(function(){
+//     Route::get("/access","access");
+//     Route::get("/data","data");
+// });
+// CA Qusetion
+// You will have to use template inheritance and have to create home, about,profile,login,logout
+// this navigation will be displayed on all chield views and you have to add sperate header 
+// and fotters for all childs seperately and also add title for all the pages separately using section and yield in the layout file.
+// and footer of second child must be green in color and third child footer must be red in color.
+
 
 // Create Criteria of country and user in the middleware if user == your name and coutry = India then 
 // only user can access the page otherwise error 

@@ -19,9 +19,9 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
     //register middleware here
     // $middleware->alias(['agefactor'=>\App\Http\Middleware\MyYZMidleware::class]); 
-    $middleware->append(GYZMiddleware::class);
-    $middleware->alias(['agechecking'=>BrainMiddleware::class]);
-    $middleware->alias(['countryCheck'=> \App\Http\Middleware\ActivityMiddleware::class]);
+    //$middleware->append(GYZMiddleware::class);
+    //$middleware->alias(['agechecking'=>BrainMiddleware::class]);
+    //$middleware->alias(['countryCheck'=> \App\Http\Middleware\ActivityMiddleware::class]);
     $middleware->encryptCookies(except: ['appearance', 'sidebar_state']);
 
         $middleware->web(append: [
