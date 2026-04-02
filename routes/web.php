@@ -57,10 +57,14 @@ Route::get("/globalmiddleware",[GYZController::class,'privacy']);
 // Step5: test the middleware by passing age parameter in the url like http://localhost:8000/brain?age=20
 Route::get("/brain",[BrainController::class,'access']);
 
+
+
+Route::view("/login",'userlogin');
+Route::view("/logout",'userlogout');
+
 // Create Criteria of country and user in the middleware if user == your name and coutry = India then 
 // only user can access the page otherwise error 
-
-
+// Route::get('/activity',[ActivityController::class,'activity'])->middleware('countryCheck');
 
 //**************************************** Second Unit ************************************** */
 //This is optional parameter routing

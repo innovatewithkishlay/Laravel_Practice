@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\ActivityMiddleware;
 use App\Http\Middleware\BrainMiddleware;
 use App\Http\Middleware\HandleAppearance;
 use App\Http\Middleware\HandleInertiaRequests;
@@ -20,6 +21,7 @@ return Application::configure(basePath: dirname(__DIR__))
     // $middleware->alias(['agefactor'=>\App\Http\Middleware\MyYZMidleware::class]); 
     $middleware->append(GYZMiddleware::class);
     $middleware->alias(['agechecking'=>BrainMiddleware::class]);
+    $middleware->alias(['countryCheck'=> \App\Http\Middleware\ActivityMiddleware::class]);
     $middleware->encryptCookies(except: ['appearance', 'sidebar_state']);
 
         $middleware->web(append: [
