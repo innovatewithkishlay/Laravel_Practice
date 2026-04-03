@@ -7,7 +7,7 @@ use App\Http\Controllers\ResourceYZController;
 use App\Http\Controllers\APIYZController;
 use App\Http\Controllers\MiddlewareYZController;
 use App\Http\Controllers\GYZController;
-// use App\Http\Controllers\BrainController;
+use App\Http\Controllers\BrainController;
 
 
 
@@ -64,14 +64,49 @@ use App\Http\Controllers\GYZController;
 // Step2: create child views and extend the layout file using @extends and define the section
 // using @section and @endsection and add the content for that section in the child views.
 
-Route::view('abc','mylayout/app');
-Route::view("login",'userlogin'); 
-Route::view("logout",'userlogout');
+// Route::view('abc','mylayout/app');
+// Route::view("login",'userlogin'); 
+// Route::view("logout",'userlogout');
 
-// Route::prefix('223yz')->controller(BrainController::class)->group(function(){
-//     Route::get("/access","access");
-//     Route::get("/data","data");
-// });
+// Group Routing using prefix and controller is used to group the routes under a common prefix and controller.
+// It is defined using the Route::prefix and Route::controller methods.
+// The prefix method is used to define the common prefix for the routes and the
+// controller method is used to define the common controller for the routes. 
+// The group method is used to group the routes together.
+// Step1: create a controller using the command php artisan make:controller BrainController
+// Step2: open create controller app->http->controller and add any method with route and return any string in that method
+// Step3: open web.php import the controller and add the route for that method in the controller and return any string in that method
+// for accesing the url http://localhost:8000/223yz/access
+Route::prefix('223yz')->controller(BrainController::class)->group(function(){
+    Route::get("/access","access")->where('id','[0-9]+');
+    Route::get("/data","data");
+    Route::get('/info/{id}',"info");
+});
+
+
+//Group routing without prefix is used to group the routes together without any common prefix.
+// It is defined using the Route::group method and it takes an array of options and a 
+// closure as parameters. The options can be middleware, namespace, prefix etc. 
+// and the closure contains the routes that are grouped together.
+// Step1: create a controller using the command php artisan make:controller BrainController
+// Step2: open create controller app->http->controller and add any method with route and return any string in that method
+// Step3: open web.php import the controller and add the route for that method in the controller and return any string in that method
+// for accesing the url http://localhost:8000/access
+Route::controller(BrainController::class)->group(function(){
+    Route::get("/access","access")->where('id','[0-9]+');
+    Route::get("/data","data");
+    Route::get('/info/{id}',"info");
+});
+
+Route::get("/abcd",function(){
+    $names=["Kishlay","Rahul","Satyarth","Anshul"];
+    return view('success',['names'=>$names]);
+    // print_r($names);
+    // $age=20;
+    // echo "The name is $name";
+    //var_dump($age);this display output in the form of boolean, integer, string etc. it is used to display the data type of the variable.
+})
+
 // CA Qusetion
 // You will have to use template inheritance and have to create home, about,profile,login,logout
 // this navigation will be displayed on all chield views and you have to add sperate header 
@@ -281,3 +316,4 @@ Route::view("logout",'userlogout');
 //         return "$number is a palindrome number.";
 //     }
 // });
+// for ending the php file you need to add the closing tag ?> at the end of the file. This is optional in PHP and it is recommended to omit the closing tag if the file contains only PHP code to prevent accidental output of whitespace or new lines after the closing tag, which can cause issues with header manipulation and session handling.
