@@ -77,11 +77,11 @@ use App\Http\Controllers\BrainController;
 // Step2: open create controller app->http->controller and add any method with route and return any string in that method
 // Step3: open web.php import the controller and add the route for that method in the controller and return any string in that method
 // for accesing the url http://localhost:8000/223yz/access
-Route::prefix('223yz')->controller(BrainController::class)->group(function(){
-    Route::get("/access","access")->where('id','[0-9]+');
-    Route::get("/data","data");
-    Route::get('/info/{id}',"info");
-});
+// Route::prefix('223yz')->controller(BrainController::class)->group(function(){
+//     Route::get("/access","access")->where('id','[0-9]+');
+//     Route::get("/data","data");
+//     Route::get('/info/{id}',"info");
+// });
 
 
 //Group routing without prefix is used to group the routes together without any common prefix.
@@ -92,20 +92,62 @@ Route::prefix('223yz')->controller(BrainController::class)->group(function(){
 // Step2: open create controller app->http->controller and add any method with route and return any string in that method
 // Step3: open web.php import the controller and add the route for that method in the controller and return any string in that method
 // for accesing the url http://localhost:8000/access
-Route::controller(BrainController::class)->group(function(){
-    Route::get("/access","access")->where('id','[0-9]+');
-    Route::get("/data","data");
-    Route::get('/info/{id}',"info");
-});
+// Route::controller(BrainController::class)->group(function(){
+//     Route::get("/access","access")->where('id','[0-9]+');
+//     Route::get("/data","data");
+//     Route::get('/info/{id}',"info");
+// });
 
-Route::get("/abcd",function(){
-    $names=["Kishlay","Rahul","Satyarth","Anshul"];
-    return view('success',['names'=>$names]);
+// Route::get("/abcd",function(){
+//     $names=["Kishlay","Rahul","Satyarth","Anshul"];
+//     return view('success',['names'=>$names]);
     // print_r($names);
     // $age=20;
     // echo "The name is $name";
     //var_dump($age);this display output in the form of boolean, integer, string etc. it is used to display the data type of the variable.
-})
+// });
+
+// Route::get('/hij',function(){
+//     // $names=["Kishlay","Rahul","Satyarth","Anshul"];
+//     // return view('coding',['names'=>$names]);
+//     $age=14;
+//     return view('coding',compact('age'));
+// });
+
+//Display the subjects in the semeseter5, you have to use 
+// on for compitorial, two for ethics, three for mvc programming and four for soft skills
+
+
+//Domain Routing is used to route the requests based on the domain name. 
+// It is defined using the Route::domain method and it takes the domain name as a parameter. 
+// The routes that are defined inside the closure will be executed only when the request is made to the specified domain name.
+// Route::domain('admin.localhost')->group(function(){
+//     Route::get('/dashboard',function(){
+//         return "Welcome to the admin dashboard";
+//     });
+//     Route::get('/profile',function(){
+//         return "Welcome to the admin profile";
+//     });
+// });
+// run code via http://admin.localhost:8000/dashboard
+// and http://admin.localhost:8000/profile to test the domain routing.
+// you need to add the following line in the hosts file to test the domain routing
+
+
+//named route via controller
+// Route::get('/',function(){
+//     return view('coding');
+// });
+// Route::get('/acv/gjj/uuii/saa/jhdck',[GYZController::class,'privacy'])->name('223yz.privacy');
+
+//Also practice question where you have to return image in the last of view of your photo using template inheritance
+
+
+// Create two view first view contain picture of any cartoon character when you click 
+// on that picture it will convert into spider man image
+
+// here is first view code
+
 
 // CA Qusetion
 // You will have to use template inheritance and have to create home, about,profile,login,logout
@@ -120,11 +162,12 @@ Route::get("/abcd",function(){
 
 //**************************************** Second Unit ************************************** */
 //This is optional parameter routing
-// Route::get('/username', function ($name) {
+// Route::get('/username/{name?}', function ($name="user") {
 //     return "Hello $name";
 // });
+
 // //This is required parameter routing
-// Route::get('/username/{name?}', function ($name="user") {
+// Route::get('/username/{name}', function ($name) {
 //     return "Hello $name";
 // });
 // //This is multiple parameter routing or multivalue routing
@@ -166,6 +209,7 @@ Route::get("/abcd",function(){
 //     });
 // });
 
+
 // //Group Routing without prefix
 // Route::group([],function(){
 //     Route::get("/about",function(){
@@ -176,16 +220,24 @@ Route::get("/abcd",function(){
 //     });
 // });
 
+
 // Route::get("/welcome",function(){
 //     for($i=0;$i<5;$i++){
 //         echo "Welcome to the $i the page <br>";
 //     }
 // });
 
-//Name Route is used to assign a name to a route, which can be used to generate URLs or redirect to the route.
 
+//Name Route is used to assign a name to a route, which can be used to generate URLs
+// so we need to have the named route so that the big route doesn't need to right that is a bad practice 
+// so instead writing the whoel route just give it a name or redirect to the route.
+
+// Route::get('/checkview',function(){
+//     return view('test');    
+// })
 // Route::view('/nameroute','app');
 // Route::view('/cse/scai/27block/web/cabin7','student')->name('details');
+
 
 // //Passing values to the view 
 // // 1) using Associative array
@@ -316,4 +368,21 @@ Route::get("/abcd",function(){
 //         return "$number is a palindrome number.";
 //     }
 // });
+//Cookie and header and types of responses
+// Basic Response
+Route::get('/test', function () {
+    return "Hello Kishlay";
+});
+// Attaching Headers
+Route::get('/header',function(){
+    return response("hey coming with the header")->header('Content-Type','text/plan');
+});
+// Attaching Cookies
+Route::get('/headers',function(){
+    return response("hey coming with the header")->header('Content-Type','text/plan')->cookie('name','kishlay',60);
+});
+// JSON Response
+// Redirection 
+
+
 // for ending the php file you need to add the closing tag ?> at the end of the file. This is optional in PHP and it is recommended to omit the closing tag if the file contains only PHP code to prevent accidental output of whitespace or new lines after the closing tag, which can cause issues with header manipulation and session handling.
