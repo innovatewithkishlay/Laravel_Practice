@@ -10,7 +10,6 @@ use App\Http\Controllers\GYZController;
 use App\Http\Controllers\BrainController;
 
 
-
 // **********************************************UNIT 3 CONTROLLER ***********************************************
 //Step1: Create a controller using the command php artisan make:controller Unit3Controller
 //Step2: open create controller app->http->controller and add any method with route and return any string in that method
@@ -34,6 +33,7 @@ use App\Http\Controllers\BrainController;
 // This will create all the routes for the resource controller like index, create, store, show, edit, update and destroy.
 // Just run the command php artisan make:controller APIYZController --resource to create a resource controller and then add the route for that controller in web.php file.
 // Route::apiResource('/apikishlay',APIYZController::class);
+
 
 //Middlware in larverl 
 // 1) create a middleware controller
@@ -159,7 +159,21 @@ use App\Http\Controllers\BrainController;
 // Create Criteria of country and user in the middleware if user == your name and coutry = India then 
 // only user can access the page otherwise error 
 // Route::get('/activity',[ActivityController::class,'activity'])->middleware('countryCheck');
+// Q how you can generate the framework in laravel
+// these are using url, action and named route
+// 1) url is used to generate the URL for a specific route. It is defined using the url() helper function and it takes the route name as a parameter. 
+// It will return the URL for the specified route.
+// 2) action is used to generate the URL for a specific controller action. It is defined using the action() helper function and it takes the controller action as a parameter. It will return the URL for the specified controller action.
+// 3) named route is used to generate the URL for a specific route by using the name of the route. It is defined using the name() method in the route definition and it takes the name of the route as a parameter. It will return the URL for the specified named route.
 
+// we are trying her to generate the framework using url and action in laravel, so we have created two methods in the BrainController and we are trying to generate the framework for those methods using url and action in the myyzdata view file.
+// Route::get('/first',[BrainController::class,'first']);
+// Route::get('/second',[BrainController::class,'second']);
+
+//URL generation
+Route::get('/url',function(){
+    return view('data');
+});
 //**************************************** Second Unit ************************************** */
 //This is optional parameter routing
 // Route::get('/username/{name?}', function ($name="user") {
@@ -381,6 +395,8 @@ Route::get('/header',function(){
 Route::get('/headers',function(){
     return response("hey coming with the header")->header('Content-Type','text/plan')->cookie('name','kishlay',60);
 });
+//Deleting cookies
+// Route::get() 
 // JSON Response
 // Redirection 
 

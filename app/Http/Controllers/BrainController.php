@@ -16,4 +16,10 @@ class BrainController extends Controller
     public function info($id){
         return "Your id is ".$id;
     }
+    public function first(){
+        return view('myyzdata');
+    }
+    public function second(){
+        return "This is the second functions";
+    }
 }
