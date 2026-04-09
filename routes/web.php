@@ -8,7 +8,7 @@ use App\Http\Controllers\APIYZController;
 use App\Http\Controllers\MiddlewareYZController;
 use App\Http\Controllers\GYZController;
 use App\Http\Controllers\BrainController;
-
+use App\Http\Controllers\TestController;
 
 // **********************************************UNIT 3 CONTROLLER ***********************************************
 //Step1: Create a controller using the command php artisan make:controller Unit3Controller
@@ -414,7 +414,6 @@ Route::get('/json',function(){
     ]);
 });
 // Redirection 
-
 Route::get('/abc/deg/fd/dfds/dfds',function(){
     return response()->json([
         "message"=>"This is the testing only ",
@@ -424,5 +423,8 @@ Route::get('/test2',function(){
     // return view('test');
     return redirect()->route('testing');
 });
-
-// for ending the php file you need to add the closing tag ?> at the end of the file. This is optional in PHP and it is recommended to omit the closing tag if the file contains only PHP code to prevent accidental output of whitespace or new lines after the closing tag, which can cause issues with header manipulation and session handling.
+//This is action redirection for controllers
+Route::get('/test3',function(){
+    return redirect()->action([BrainController::class,'second']);
+});
+Route::get('/result',[TestController::class,'students']);
