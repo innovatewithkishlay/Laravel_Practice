@@ -174,6 +174,13 @@ use App\Http\Controllers\BrainController;
 Route::get('/url',function(){
     return view('data');
 });
+//Breeze
+// Step1 is to make a new project using command composer create-project laravel/laravel projectname
+// Step2 is to install breeze using command composer require laravel/breeze --dev
+// Step3 is to run the command php artisan breeze:install to install the breeze package
+// Step4 is to run the command npm install to install the npm packages
+// Step5 is to run the command npm run dev to compile the assets
+// step 6 is to run the command php artisan serve
 //**************************************** Second Unit ************************************** */
 //This is optional parameter routing
 // Route::get('/username/{name?}', function ($name="user") {
@@ -396,9 +403,26 @@ Route::get('/headers',function(){
     return response("hey coming with the header")->header('Content-Type','text/plan')->cookie('name','kishlay',60);
 });
 //Deleting cookies
-// Route::get() 
+Route::get('/deletecookie',function(){
+    return response("Deleting cookie")->cookie('name','',-1);
+});
 // JSON Response
+Route::get('/json',function(){
+    return response()->json([
+        "name"=>"kishlay",
+        "age"=>30,
+    ]);
+});
 // Redirection 
 
+Route::get('/abc/deg/fd/dfds/dfds',function(){
+    return response()->json([
+        "message"=>"This is the testing only ",
+    ]);
+})->name('testing');
+Route::get('/test2',function(){
+    // return view('test');
+    return redirect()->route('testing');
+});
 
 // for ending the php file you need to add the closing tag ?> at the end of the file. This is optional in PHP and it is recommended to omit the closing tag if the file contains only PHP code to prevent accidental output of whitespace or new lines after the closing tag, which can cause issues with header manipulation and session handling.
