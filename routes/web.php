@@ -176,7 +176,7 @@ Route::domain('admin.localhost')->group(function(){
 // Route::get('/first',[BrainController::class,'first']);
 // Route::get('/second',[BrainController::class,'second']);
 
-// genrting framework by a url and actions
+// generating framework using url and action in laravel
 Route::get("/first",[BrainController::class,"first"]);
 Route::get("/second",[BrainController::class,"second"]);
 Route::get("/third",[BrainController::class,"third"]);
