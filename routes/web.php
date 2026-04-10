@@ -9,6 +9,7 @@ use App\Http\Controllers\MiddlewareYZController;
 use App\Http\Controllers\GYZController;
 use App\Http\Controllers\BrainController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\testingresource;
 
 // **********************************************UNIT 3 CONTROLLER ***********************************************
 //Step1: Create a controller using the command php artisan make:controller Unit3Controller
@@ -17,6 +18,7 @@ use App\Http\Controllers\TestController;
 
 // Route::get('/unit3controller',[Unit3Controller::class,'show']);
 // Route::get('/',[Unit3Controller::class,'display']);
+// Route::Get('/middleware/{age}',[TestController::class,'students'])->middleware('agevalidator'); 
 
 
 // Route::get('/invokable', InvokableController::class);
@@ -29,7 +31,6 @@ use App\Http\Controllers\TestController;
 //Step2: open create controller app->http->controller and add any method with route and return any string in that method
 //Step3: open web.php import the controller and add the route for that method in the controller and return any string in that method
 // Route::resource('/kishlay',ResourceYZController::class);
-
 // This will create all the routes for the resource controller like index, create, store, show, edit, update and destroy.
 // Just run the command php artisan make:controller APIYZController --resource to create a resource controller and then add the route for that controller in web.php file.
 // Route::apiResource('/apikishlay',APIYZController::class);
@@ -47,6 +48,7 @@ use App\Http\Controllers\TestController;
 // It is registered in the bootstrap/app.php file and it will be executed for every request that is made to the application.
 //  You can create a global middleware by creating a middleware class and then registering it in the bootstrap/app.php file.
 // Route::get("/globalmiddleware",[GYZController::class,'privacy']);
+//global middleware is registered using append, $middleware->append(GlobalMiddleware::class); and it will be executed for every request that is made to the application.
 
 
 //This is middleware inside the controller, 
@@ -57,7 +59,6 @@ use App\Http\Controllers\TestController;
 // Step5: test the middleware by passing age parameter in the url like http://localhost:8000/brain?age=20
 // Route::get("/brain",[BrainController::class,'access']);
 
-
 //Template inheritance in laravel
 // Step1: create a layout file in the views folder and add the common structure of the
 // website like header, footer and navigation in that file and use @yield to define the section where the child views will be displayed.
@@ -65,8 +66,9 @@ use App\Http\Controllers\TestController;
 // using @section and @endsection and add the content for that section in the child views.
 
 // Route::view('abc','mylayout/app');
-// Route::view("login",'userlogin'); 
+// Route::view("login",'userlogin');
 // Route::view("logout",'userlogout');
+
 
 // Group Routing using prefix and controller is used to group the routes under a common prefix and controller.
 // It is defined using the Route::prefix and Route::controller methods.
@@ -121,14 +123,16 @@ use App\Http\Controllers\TestController;
 //Domain Routing is used to route the requests based on the domain name. 
 // It is defined using the Route::domain method and it takes the domain name as a parameter. 
 // The routes that are defined inside the closure will be executed only when the request is made to the specified domain name.
-// Route::domain('admin.localhost')->group(function(){
-//     Route::get('/dashboard',function(){
-//         return "Welcome to the admin dashboard";
-//     });
-//     Route::get('/profile',function(){
-//         return "Welcome to the admin profile";
-//     });
-// });
+
+Route::domain('admin.localhost')->group(function(){
+    Route::get('/dashboard',function(){
+        return "Welcome to the admin dashboard";
+    });
+    Route::get('/profile',function(){
+        return "Welcome to the admin profile";
+    });
+});
+
 // run code via http://admin.localhost:8000/dashboard
 // and http://admin.localhost:8000/profile to test the domain routing.
 // you need to add the following line in the hosts file to test the domain routing
@@ -139,7 +143,9 @@ use App\Http\Controllers\TestController;
 //     return view('coding');
 // });
 // Route::get('/acv/gjj/uuii/saa/jhdck',[GYZController::class,'privacy'])->name('223yz.privacy');
-
+// Route::get('/testin',function(){
+//     return redirect()->route('223yz.privacy');
+// });
 //Also practice question where you have to return image in the last of view of your photo using template inheritance
 
 
@@ -170,10 +176,15 @@ use App\Http\Controllers\TestController;
 // Route::get('/first',[BrainController::class,'first']);
 // Route::get('/second',[BrainController::class,'second']);
 
+// genrting framework by a url and actions
+Route::get("/first",[BrainController::class,"first"]);
+Route::get("/second",[BrainController::class,"second"]);
+Route::get("/third",[BrainController::class,"third"]);
 //URL generation
 Route::get('/url',function(){
     return view('data');
 });
+
 //Breeze
 // Step1 is to make a new project using command composer create-project laravel/laravel projectname
 // Step2 is to install breeze using command composer require laravel/breeze --dev

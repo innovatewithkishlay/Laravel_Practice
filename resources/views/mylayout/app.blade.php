@@ -13,7 +13,6 @@
     <img src="{{ asset('images/image.png') }}" alt="">
 
     @yield('childdata')
-
     <footer>
         ©2026 All rights reserved by Kishlay Kumar
     </footer>

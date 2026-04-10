@@ -22,4 +22,7 @@ class BrainController extends Controller
     public function second(){
         return "This is the second functions";
     }
+    public function third(){
+        return "This is the third functions";
+    }
 }

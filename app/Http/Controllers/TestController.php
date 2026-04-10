@@ -26,6 +26,7 @@ class TestController extends Controller
         //         echo "<br>";
         //     }
         // }/
-        return view('test',compact('students'));
+        // return view('test',compact('students'));
+        return "Hello from middleware controller acess given " ;
     }
 }

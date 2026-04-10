@@ -22,6 +22,7 @@ return Application::configure(basePath: dirname(__DIR__))
     //$middleware->append(GYZMiddleware::class);
     //$middleware->alias(['agechecking'=>BrainMiddleware::class]);
     //$middleware->alias(['countryCheck'=> \App\Http\Middleware\ActivityMiddleware::class]);
+    $middleware->alias(['agevalidator'=>\App\Http\Middleware\TestingMiddleware::class]);
     $middleware->encryptCookies(except: ['appearance', 'sidebar_state']);
 
         $middleware->web(append: [
