@@ -17,6 +17,9 @@ class FormYZController extends Controller
             'email'=>'required|email',
             'phone'=>'required|numeric|min:10|max:10'
         ]);
+        //Request method is used to retrieve the data from the form 
+        //one is is simple  $request->names
+        //other is via input method $request->input('name')
         $name=$request->name;   
         $email=$request->email;
         $phone=$request->phone;
