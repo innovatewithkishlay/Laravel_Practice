@@ -12,5 +12,19 @@ ROute::post('/submit',[FormYZController::class,'showForm']);
 //CSRF (Cross-Site Request Forgery) is a type of attack where a malicious website tricks a user's browser into making an unwanted request to another site where the user is authenticated. Laravel protects against CSRF attacks by generating a unique token for each active user session. This token must be included in any form submissions or AJAX requests that modify data on the server. If the token is missing or does not match the one stored in the session, Laravel will reject the request and return a 419 error. To prevent CSRF attacks, always include the `@csrf` directive in your Blade templates when creating forms, and ensure that your AJAX requests include the CSRF token in the headers.
 
 //Upload PDF file
-Route::get('/upload',[UploadYZController::class,'show']);
-Route::post('/upload-pdf',[UploadYZController::class,'upload']);
+/*Route::get('/upload',[UploadYZController::class,'show']);
+Route::post('/upload-pdf',[UploadYZController::class,'upload']); */
+
+//Localization steps
+//Step1: create folder of language in resources/lang (en,hi,ta,pa)
+//Step2: create file messages.php in each language folder and add key value pair in it like return message and about
+//Step3: create middleware to set locale and register it inside bootstrap/app.php
+//Step4: create view  ther make select option to change lang and also add csrf 
+//Step5: create route to set locale in session and redirect back to previous page
+Route::get('/',function(){
+    return view('welcome');
+});
+Route::get('/lang/{locale}',function($locale){
+    session(['locale'=>$locale]);
+    return redirect()->back();
+});
