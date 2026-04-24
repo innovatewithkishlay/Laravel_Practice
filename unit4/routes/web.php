@@ -28,3 +28,11 @@ Route::get('/lang/{locale}',function($locale){
     session(['locale'=>$locale]);
     return redirect()->back();
 });
+
+//Question 
+//Student are required to devlop cookie-based functionlity using route 
+// a) the student needs to create an applciation with two route, where one route set a cookie  city = mumbai and another route 
+// to retrive and display the value of cookie city.
+// b) additionally, the student also need to check whether the cookie exit before dipalying it , if the coookies not found display the message "the message cookie not found" should be displayed.
+//c)) student required to implement functionality  to implement using Cookie::queue() method to set mutiple cookie like name and email
+// d) create a from to take input of name and email and set the cookie using Cookie::queue() method and display the value of cookie in another route.
