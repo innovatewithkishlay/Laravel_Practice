@@ -17,9 +17,10 @@ class TestingYZMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public $data;
+    public function __construct($data)
     {
-        //
+        $this->data=$data;
     }
 
     /**
@@ -28,7 +29,7 @@ class TestingYZMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Testing Y Z Mail',
+            subject: 'Hey kishlay, why do not to work hard?',
         );
     }
 
@@ -38,7 +39,13 @@ class TestingYZMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emailyz',
+            with:[
+                'name'=>$this->data['name']
+            ]
+//             with:[
+//     'data' => $this->data
+// ]
         );
     }
 
@@ -49,6 +56,10 @@ class TestingYZMail extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        return [
+            Attachment::fromPath(public_path('pancard.pdf'))
+                ->as('pancard.pdf')
+                ->withMime('application/pdf'),
+        ];
     }
 }

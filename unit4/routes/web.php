@@ -3,7 +3,7 @@
 use App\Http\Controllers\FormYZController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UploadYZController;
-
+    
 Route::get('/ghi',[FormYZController::class,'show']);
 ROute::post('/submit',[FormYZController::class,'showForm']);
 // Form repopulation is a technique used in web development to retain user input in form fields after a form submission, especially when there are validation errors. 
@@ -36,3 +36,7 @@ Route::get('/lang/{locale}',function($locale){
 // b) additionally, the student also need to check whether the cookie exit before dipalying it , if the coookies not found display the message "the message cookie not found" should be displayed.
 //c)) student required to implement functionality  to implement using Cookie::queue() method to set mutiple cookie like name and email
 // d) create a from to take input of name and email and set the cookie using Cookie::queue() method and display the value of cookie in another route.
+
+
+//Sending email in laravel
+Route::get('/send-email',[App\Http\Controllers\EmailYZController::class,'send']);
