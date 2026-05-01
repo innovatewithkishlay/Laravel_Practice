@@ -17,6 +17,7 @@ class EmailYZController extends Controller
         return "Email sent successfully";
     }
 //     public function send(){
+
 //     $data = [
 //         'name' => 'kishlay kumar',
 //         'info' => 'Please upload the marks'

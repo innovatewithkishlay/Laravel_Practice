@@ -40,3 +40,11 @@ Route::get('/lang/{locale}',function($locale){
 
 //Sending email in laravel
 Route::get('/send-email',[App\Http\Controllers\EmailYZController::class,'send']);
+
+
+Route::view('/loginform','MyFormYZ');
+Route::post('/login',[App\Http\Controllers\SessionYZController::class,'login']);
+Route::get('/form',function(){
+    return view('SessionYZ');
+});
+Route::get('/logout',[App\Http\Controllers\SessionYZController::class,'logout']);
