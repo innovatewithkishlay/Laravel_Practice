@@ -8,8 +8,16 @@
 <body>
     <form method="POST" action="/login">
         @csrf
-        <input type="text" name="name" placeholder="Enter your name">
+        <input type="text" name="name" placeholder="Enter your name" value="{{old('name')}}">
         <br><br>
+        @error('name')
+        <p style="color:red">{{ $message }}</p>
+        @enderror
+        <input type="text" name="email" placeholder="Enter your email:" value="{{old('email')}}">
+        <br> <br>
+        @error('email')
+        <p style="color:red">{{$message}}</p>
+        @enderror
         <button type="submit">Submit</button>
     </form>
 </body>
