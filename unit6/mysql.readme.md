@@ -4,3 +4,4 @@ step3: run the command php artisan make:migration create_students_table
 step4: go inside database/migrations/then add the Schema function to create 
 step5: then run php artisan migrate to migrate the database content to mysql
 step6: then make controller studentcontrolle using command php artisan make:controller StudentController to insert data into db
+step7: then import the controller in web.php and make route
