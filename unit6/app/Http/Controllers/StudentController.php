@@ -21,6 +21,14 @@ class StudentController extends Controller
             'name'=>'kishlayiya',
             'email'=>'dsu@gmail.com'
         ]);
+        return "Data updated successfully";
     }
-
+    public function delete(){
+        DB::table('students')->where('id',1)->delete();
+        return "Data deleted";
+    }
+    public function read(){
+        $students_detail=DB::table('students')->get();
+        return $students_detail;
+    }
 }
