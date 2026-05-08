@@ -20,7 +20,8 @@ class DemoController extends Controller
         return redirect('/read');
     }
     public function read(){
-
+        $data=DB::table('teachers')->get();
+        return view('read',compact('data'));
     }
     public function update(){
     }
