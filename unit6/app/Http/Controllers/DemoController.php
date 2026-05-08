@@ -24,6 +24,10 @@ class DemoController extends Controller
         return view('read',compact('data'));
     }
     public function update(){
+        DB::table('teachers')->where('id',1)->update([
+            'name'=>'kishlayiya',
+            'email'=>'kishlayiya@gmail.com'
+        ]);
     }
     public function delete(){
 
