@@ -6,10 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="POST">
+    <form action="/update/{{$data1->id}}" method="POST">
         @csrf
-        Name: <input type="text" name="name" placeholder="Enter your name "> <br><br>
-        Email: <input type="email" name="email" placeholder="Enter your email "> <br><br>
+        Name: <input type="text" name="name" value="{{$data1->name}}" placeholder="Enter your name "> <br><br>
+        Email: <input type="email" name="email" value="{{$data1->email}}" placeholder="Enter your email "> <br><br>
     <button type="submit">Submit</button>
     </form>
 </body>
