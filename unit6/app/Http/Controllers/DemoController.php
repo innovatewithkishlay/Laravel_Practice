@@ -28,7 +28,8 @@ class DemoController extends Controller
     public function delete(){
 
     }
-    public function edit(){
-
+    public function edit($id){
+        $data1=DB::table('teachers')->where('id',$id)->first(); // here first means it will return the first record of the table which is matched with the id and it will return the data in the form of object
+        return view('edit',compact('data1'));
     }
 }
