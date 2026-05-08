@@ -23,14 +23,18 @@ class DemoController extends Controller
         $data=DB::table('teachers')->get();
         return view('read',compact('data'));
     }
-    public function update(){
-        DB::table('teachers')->where('id',1)->update([
-            'name'=>'kishlayiya',
-            'email'=>'kishlayiya@gmail.com'
+    public function update(Request $request,$id){
+        $name=$request->input('name');
+        $email=$request->input('email');
+        DB::table('teachers')->where('id',$id)->update([
+            'name'=>$name,
+            'email'=>$email,
         ]);
+        return redirect('/read');
     }
-    public function delete(){
-
+    public function delete($id){
+        DB::table('teachers')->where('id',$id)->delete();
+        return redirect('/read');
     }
     public function edit($id){
         $data1=DB::table('teachers')->where('id',$id)->first(); // here first means it will return the first record of the table which is matched with the id and it will return the data in the form of object
