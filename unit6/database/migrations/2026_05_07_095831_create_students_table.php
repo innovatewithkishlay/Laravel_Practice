@@ -19,12 +19,6 @@ return new class extends Migration
             $table->timestamps();
         });
     }
-    public function update(){
-        DB::table('students')->where('id',1)->update([
-            'name'=>'kishlayiya',
-            'email'=>'dsu@gmail.com'
-        ]);
-    }
 
     /**
      * Reverse the migrations.
