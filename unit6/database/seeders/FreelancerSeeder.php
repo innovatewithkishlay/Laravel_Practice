@@ -12,19 +12,26 @@ class FreelancerSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('freelancer')->insert([
-            [
-                'name' => 'kishlay',
-                'email' => 'kkishlay502@gmail.com'
-            ],
-            [
-                'name' => 'kishlay2',
-                'email' => 'kkishlay503@gmail.com'
-            ],
-            [
-                'name' => 'kishlay3',
-                'email' => 'kkishlay504@gmail.com'
-            ]
-        ]);
+        for($i = 1; $i <= 50; $i++) {
+
+    DB::table('freelancer')->insert([
+        'name' => 'abc' . rand(1, 1000),
+        'email' => 'abc' . rand(1, 1000) . '@gmail.com'
+    ]);
+}
+        // DB::table('freelancer')->insert([
+        //     [
+        //         'name' => 'kishlay',
+        //         'email' => 'kkishlay502@gmail.com'
+        //     ],
+        //     [
+        //         'name' => 'kishlay2',
+        //         'email' => 'kkishlay503@gmail.com'
+        //     ],
+        //     [
+        //         'name' => 'kishlay3',
+        //         'email' => 'kkishlay504@gmail.com'
+        //     ]
+        // ]);
     }
 }
