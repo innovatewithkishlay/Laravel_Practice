@@ -18,3 +18,6 @@ Route::get('/read',[DemoController::class,'read']);
 Route::get('/delete/{id}',[DemoController::class,'delete']);
 Route::get('/edit/{id}',[DemoController::class,'edit']);
 Route::post('/update/{id}',[DemoController::class,'update']);
+
+// compose reqyire mongodb/laravel-mongodb
+// Run this command to connect with mongodb database
