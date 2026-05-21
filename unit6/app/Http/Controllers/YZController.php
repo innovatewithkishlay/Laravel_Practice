@@ -55,7 +55,8 @@ class YZController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data1=YZ::find($id); //eloquent method to find the entry with the given id and store it in the variable data
+        return view('edit2',compact('data1'));
     }
 
     /**
@@ -63,7 +64,12 @@ class YZController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data=YZ::find($id); //eloquent method to find the entry with the given id and store it in the variable data
+        $data->update([
+            'name'=>$request->name,
+            'email'=>$request->email
+        ]);
+        return redirect('/abc');
     }
 
     /**
