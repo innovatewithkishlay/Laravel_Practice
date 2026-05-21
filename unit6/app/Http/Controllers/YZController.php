@@ -21,7 +21,8 @@ class YZController extends Controller
      */
     public function create()
     {
-        //
+        
+
     }
 
     /**
@@ -30,6 +31,11 @@ class YZController extends Controller
     public function store(Request $request)
     {
         //
+        YZ::create([
+            'name'=>$request->name,
+            'email'=>$request->email
+        ]);
+        return redirect('/abc');
     }
 
     /**
@@ -37,7 +43,8 @@ class YZController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data=YZ::find($id); //eloquent method to find the entry with the given id and store it in the variable data
+        return view('show2',compact('data'));
     }
 
     /**
