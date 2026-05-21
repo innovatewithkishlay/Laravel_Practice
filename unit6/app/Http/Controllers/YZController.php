@@ -77,6 +77,8 @@ class YZController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data=YZ::find($id); //eloquent method to find the entry with the given id and store it in the variable data
+        $data->delete(); //eloquent method to delete the entry from the database
+        return redirect('/abc');
     }
 }
