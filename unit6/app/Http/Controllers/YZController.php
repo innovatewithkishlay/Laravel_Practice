@@ -19,10 +19,13 @@ class YZController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request) //this is for showing the form to the user to create a new entry in the database
     {
-        
-
+        YZ::create([
+            'name'=>$request->name,
+            'email'=>$request->email
+        ]);
+        return redirect('/abc');
     }
 
     /**
