@@ -31,4 +31,8 @@ class TestingAPIController extends Controller
         ]); //eloquent method to update the entry in the database with the given data from the request
         return response()->json(['message'=>'Data updated successfully']); //returning a json response with a message
     }
+    public function destroy(string $id){
+        Testing::find($id)->delete(); //eloquent method to find the entry with the given id and delete it from the database
+        return response()->json('data deleted successfully'); //returning a json response with a message
+    }
 }
