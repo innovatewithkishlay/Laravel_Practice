@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,8 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        View::share('name', 'kishlay');
+        View::share('message', 'pyar se bolo sita ram ');
         // $this->configureDefaults();
-        Route::pattern('id','[A-Za-z]+');
+        Route::pattern('id', '[A-Za-z]+');
     }
 
     /**
@@ -38,7 +41,8 @@ class AppServiceProvider extends ServiceProvider
             app()->isProduction(),
         );
 
-        Password::defaults(fn (): ?Password => app()->isProduction()
+        Password::defaults(
+            fn(): ?Password => app()->isProduction()
             ? Password::min(12)
                 ->mixedCase()
                 ->letters()

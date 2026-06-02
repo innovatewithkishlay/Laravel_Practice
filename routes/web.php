@@ -103,10 +103,10 @@ use App\Http\Controllers\testingresource;
 // Route::get("/abcd",function(){
 //     $names=["Kishlay","Rahul","Satyarth","Anshul"];
 //     return view('success',['names'=>$names]);
-    // print_r($names);
-    // $age=20;
-    // echo "The name is $name";
-    //var_dump($age);this display output in the form of boolean, integer, string etc. it is used to display the data type of the variable.
+// print_r($names);
+// $age=20;
+// echo "The name is $name";
+//var_dump($age);this display output in the form of boolean, integer, string etc. it is used to display the data type of the variable.
 // });
 
 // Route::get('/hij',function(){
@@ -124,11 +124,11 @@ use App\Http\Controllers\testingresource;
 // It is defined using the Route::domain method and it takes the domain name as a parameter. 
 // The routes that are defined inside the closure will be executed only when the request is made to the specified domain name.
 
-Route::domain('admin.localhost')->group(function(){
-    Route::get('/dashboard',function(){
+Route::domain('admin.localhost')->group(function () {
+    Route::get('/dashboard', function () {
         return "Welcome to the admin dashboard";
     });
-    Route::get('/profile',function(){
+    Route::get('/profile', function () {
         return "Welcome to the admin profile";
     });
 });
@@ -177,11 +177,11 @@ Route::domain('admin.localhost')->group(function(){
 // Route::get('/second',[BrainController::class,'second']);
 
 // generating framework using url and action in laravel
-Route::get("/first",[BrainController::class,"first"]);
-Route::get("/second",[BrainController::class,"second"]);
-Route::get("/third",[BrainController::class,"third"]);
+Route::get("/first", [BrainController::class, "first"]);
+Route::get("/second", [BrainController::class, "second"]);
+Route::get("/third", [BrainController::class, "third"]);
 //URL generation
-Route::get('/url',function(){
+Route::get('/url', function () {
     return view('data');
 });
 
@@ -192,6 +192,8 @@ Route::get('/url',function(){
 // Step4 is to run the command npm install to install the npm packages
 // Step5 is to run the command npm run dev to compile the assets
 // step 6 is to run the command php artisan serve
+
+
 //**************************************** Second Unit ************************************** */
 //This is optional parameter routing
 // Route::get('/username/{name?}', function ($name="user") {
@@ -199,8 +201,8 @@ Route::get('/url',function(){
 // });
 
 // //This is required parameter routing
-// Route::get('/username/{name}', function ($name) {
-//     return "Hello $name";
+// Route::get('/username/{name}/{age}', function ($name, $age) {
+//     return "Hello $name" . "and your age is $age";
 // });
 // //This is multiple parameter routing or multivalue routing
 // Route::get("/submitForm/{username}/{email}",function($name,$email){
@@ -232,6 +234,7 @@ Route::get('/url',function(){
 //         return "Welcome to the profile page";
 //     });
 // });
+
 // Route::prefix("agent")->group(function(){
 //     Route::get("/profile",function(){
 //         return "welcome to agent profile";
@@ -259,6 +262,30 @@ Route::get('/url',function(){
 //     }
 // });
 
+Route::get('/learning', function () {
+    $courses = [
+        "MCA" => "Master of Computer Applications",
+        "MBA" => "Master of Business Applications",
+        "BCA" => "Bachelor of Computer Applications",
+        "BBA" => "Bachelor of Business Applications",
+    ];
+    return view("learning")->with("courses", $courses);
+});
+Route::view("/justview", 'learning');
+Route::get('/headers', function () {
+    return response('coming with heaser')
+        ->header('Content-Type', 'text/plain')
+        ->cookie('mycokie', 'heylaravel', '20');
+});
+
+Route::get("/dfsd/fdsdf/rewrwf/dfasfsf/dsfas", function () {
+    return response()->json([
+        "message" => "Json response"
+    ]);
+})->name("testing");
+Route::get("/redirect", function () {
+    return redirect()->route("testing");
+});
 
 //Name Route is used to assign a name to a route, which can be used to generate URLs
 // so we need to have the named route so that the big route doesn't need to right that is a bad practice 
@@ -340,7 +367,7 @@ Route::get('/url',function(){
 
 // // Test all routes by accessing them through appropriate URLs in the browser.
 
-  
+
 // // A)
 // Route::get('eventhome',function(){
 //         return "Welcome to the Computer Science Department Event Registration System";
@@ -406,36 +433,36 @@ Route::get('/test', function () {
     return "Hello Kishlay";
 });
 // Attaching Headers
-Route::get('/header',function(){
-    return response("hey coming with the header")->header('Content-Type','text/plan');
+Route::get('/header', function () {
+    return response("hey coming with the header")->header('Content-Type', 'text/plan');
 });
 // Attaching Cookies
-Route::get('/headers',function(){
-    return response("hey coming with the header")->header('Content-Type','text/plan')->cookie('name','kishlay',60);
+Route::get('/headers', function () {
+    return response("hey coming with the header")->header('Content-Type', 'text/plan')->cookie('name', 'kishlay', 60);
 });
 //Deleting cookies
-Route::get('/deletecookie',function(){
-    return response("Deleting cookie")->cookie('name','',-1);
+Route::get('/deletecookie', function () {
+    return response("Deleting cookie")->cookie('name', '', -1);
 });
 // JSON Response
-Route::get('/json',function(){
+Route::get('/json', function () {
     return response()->json([
-        "name"=>"kishlay",
-        "age"=>30,
+        "name" => "kishlay",
+        "age" => 30,
     ]);
 });
 // Redirection 
-Route::get('/abc/deg/fd/dfds/dfds',function(){
+Route::get('/abc/deg/fd/dfds/dfds', function () {
     return response()->json([
-        "message"=>"This is the testing only ",
+        "message" => "This is the testing only ",
     ]);
 })->name('testing');
-Route::get('/test2',function(){
+Route::get('/test2', function () {
     // return view('test');
     return redirect()->route('testing');
 });
 //This is action redirection for controllers
-Route::get('/test3',function(){
-    return redirect()->action([BrainController::class,'second']);
+Route::get('/test3', function () {
+    return redirect()->action([BrainController::class, 'second']);
 });
-Route::get('/result',[TestController::class,'students']);
+Route::get('/result', [TestController::class, 'students']);
