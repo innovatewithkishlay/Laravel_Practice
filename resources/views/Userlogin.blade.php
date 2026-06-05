@@ -1,5 +1,5 @@
 @extends('mylayout.app')
-@section('title','login')
-<h2>This is my login page</h2>
+
 @section('childdata')
+    <h1>This is login page for user</h1>
 @endsection

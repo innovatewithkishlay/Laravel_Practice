@@ -12,18 +12,20 @@ use App\Http\Middleware\GYZMiddleware;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
-        web: __DIR__.'/../routes/web.php',
-        commands: __DIR__.'/../routes/console.php',
+        web: __DIR__ . '/../routes/web.php',
+        commands: __DIR__ . '/../routes/console.php',
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-    //register middleware here
-    // $middleware->alias(['agefactor'=>\App\Http\Middleware\MyYZMidleware::class]); 
-    //$middleware->append(GYZMiddleware::class);
-    //$middleware->alias(['agechecking'=>BrainMiddleware::class]);
-    //$middleware->alias(['countryCheck'=> \App\Http\Middleware\ActivityMiddleware::class]);
-    $middleware->alias(['agevalidator'=>\App\Http\Middleware\TestingMiddleware::class]);
-    $middleware->encryptCookies(except: ['appearance', 'sidebar_state']);
+        $middleware->alias([
+            'agevalidator' => \App\Http\Middleware\AgeValidator::class,
+        ]);
+        //register middleware here
+        // $middleware->alias(['agefactor'=>\App\Http\Middleware\MyYZMidleware::class]); 
+        //$middleware->append(GYZMiddleware::class);
+        //$middleware->alias(['agechecking'=>BrainMiddleware::class]);
+        //$middleware->alias(['countryCheck'=> \App\Http\Middleware\ActivityMiddleware::class]);
+        $middleware->encryptCookies(except: ['appearance', 'sidebar_state']);
 
         $middleware->web(append: [
             HandleAppearance::class,

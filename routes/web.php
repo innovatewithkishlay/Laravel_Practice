@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AgeValidator;
 use Illuminate\Support\Facades\Route;
 use App\Http\controllers\Unit3Controller;
 use App\Http\Controllers\InvokableController;
@@ -66,8 +67,8 @@ use App\Http\Controllers\testingresource;
 // using @section and @endsection and add the content for that section in the child views.
 
 // Route::view('abc','mylayout/app');
-// Route::view("login",'userlogin');
-// Route::view("logout",'userlogout');
+Route::view("/login", 'Userlogin');
+Route::view("/logout", 'Userlogout');
 
 
 // Group Routing using prefix and controller is used to group the routes under a common prefix and controller.
@@ -184,6 +185,8 @@ Route::get("/third", [BrainController::class, "third"]);
 Route::get('/url', function () {
     return view('data');
 });
+
+Route::get('/ageu/{age}', [AgeValidator::class, 'ageform'])->middleware('agevalidator');
 
 //Breeze
 // Step1 is to make a new project using command composer create-project laravel/laravel projectname
