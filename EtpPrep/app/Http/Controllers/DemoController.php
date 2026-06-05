@@ -13,6 +13,10 @@ class DemoController extends Controller
     }
     public function insert(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:teacher,email'
+        ]);
         $name = $request->input('name');
         $email = $request->input('email');
 

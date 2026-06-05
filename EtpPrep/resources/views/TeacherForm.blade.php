@@ -12,10 +12,16 @@
     <form method="POST" action="/insert">
         @csrf
         <label>Name: </label>
-        <input type="text" name="name" placeholder="Enter you   r name" />
+        <input type="text" name="name" placeholder="Enter your name" value="{{ old('name') }}" />
+        @error('name')
+            <p style="color:red">{{ $message }}</p>
+        @enderror
         <br><br>
         <label>Email:</label>
-        <input type="email" name="email" placeholder="Enter your email" />
+        <input type="email" name="email" placeholder="Enter your email" value="{{ old('email') }}" />
+        @error('email')
+            <p style="color:red">{{ $message }}</p>
+        @enderror
         <br><br>
         <button type="submit">Submit</button>
     </form>
